@@ -10,10 +10,13 @@ import java.util.List;
 
 @Service
 public class TransactionService {
-    List<Transaction> findAllByAccountNumber(Long accountNumber, Integer numberOfTranscation) {
+
+    final Integer numberofTransaction = 10;
+
+    public List<Transaction> findAllByAccountNumber(Long accountNumber) {
         ArrayList listOfTranscation = new ArrayList();
-        for (int i = 0; i < numberOfTranscation; i++) {
-            listOfTranscation.add(Transaction.of("test", LocalDate.now(), 1234L,
+        for (int i = 0; i < numberofTransaction; i++) {
+            listOfTranscation.add(Transaction.of("test", LocalDate.now(), accountNumber,
                     "USD", BigDecimal.valueOf(100), "nike", "http://nike.com/logo"));
         }
         return listOfTranscation;
