@@ -1,11 +1,13 @@
 package com.batterbank.be.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
+@AllArgsConstructor(staticName = "of")
 public class Transaction {
 
     private final String type;
