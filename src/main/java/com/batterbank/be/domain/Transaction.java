@@ -3,24 +3,36 @@ package com.batterbank.be.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
+@Entity
 @AllArgsConstructor(staticName = "of")
-public class Transaction {
+public class Transaction implements Serializable {
 
-    private final String type;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
 
-    private final LocalDate date;
+    private String type;
 
-    private final Long accountNumber;
+    private LocalDate date;
 
-    private final String currency;
+    private Long accountNumber;
 
-    private final BigDecimal amount;
+    private String currency;
 
-    private final String merchantName;
+    private BigDecimal amount;
 
-    private final String merchantLogo;
+    private String merchantName;
+
+    private String merchantLogo;
+
+    protected Transaction() {}
 }
