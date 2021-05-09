@@ -2,6 +2,7 @@ package com.batterbank.be.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @AllArgsConstructor(staticName = "of")
+@NoArgsConstructor
 public class Transaction implements Serializable {
 
     @Id
@@ -34,5 +36,4 @@ public class Transaction implements Serializable {
 
     private String merchantLogo;
 
-    protected Transaction() {}
 }
