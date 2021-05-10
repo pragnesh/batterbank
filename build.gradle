@@ -34,6 +34,12 @@ dependencies {
 	testImplementation 'io.rest-assured:json-path:4.3.3'
 	testImplementation 'io.rest-assured:xml-path:4.3.3'
 
+	implementation platform('org.testcontainers:testcontainers-bom:1.15.3') //import bom
+	testImplementation "org.testcontainers:testcontainers"
+	testImplementation "org.testcontainers:junit-jupiter"
+	testImplementation 'org.testcontainers:mysql'
+
+
 }
 
 test {
