@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  redis:
+    image: redis:6
+    ports:
+      - "6379:6379"
+    restart: always
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    volumes:
+      - ./src/main/resources/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./datadir:/var/lib/mysql
+    restart: always
+  web:
+    image: better-banking:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+      - mysql
+    restart: always
+    environment:
+      MYSQL_HOSTNAME: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: my-secret-pw
+      REDIS_HOST: redis
+
+networks:
+  default:
+    external: true
+    name: banknet
